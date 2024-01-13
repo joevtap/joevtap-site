@@ -1,0 +1,53 @@
+<div
+  class="fixed bottom-6 right-6 flex flex-col gap-4 items-center justify-end"
+>
+  <slot />
+</div>
+
+<script>
+  const scroll = document.querySelectorAll("button.scroll");
+  const scrollHome = document.querySelector("button.scroll-home");
+  let scrollPosition = 0;
+
+  scrollHome!.addEventListener("click", () => {
+    scrollPosition = 0;
+
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: "smooth",
+    });
+  });
+
+  window.addEventListener("scroll", () => {
+    scrollPosition = window.scrollY;
+
+    if (scrollPosition > 0) {
+      scrollHome!.classList.remove("hidden");
+      scrollHome!.classList.add("flex");
+    } else {
+      scrollHome!.classList.add("hidden");
+      scrollHome!.classList.remove("flex");
+    }
+  });
+
+  scroll!.forEach((s) =>
+    s.addEventListener("click", () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      if (s.getAttribute("data-direction")! == "up") {
+        scrollPosition = Math.max(scrollPosition - windowHeight, 0);
+      } else {
+        scrollPosition = Math.min(
+          scrollPosition + windowHeight,
+          documentHeight - windowHeight
+        );
+      }
+
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: "smooth",
+      });
+    })
+  );
+</script>
