@@ -5,7 +5,7 @@ import CurrentlyWorkingOn from "./CurrentlyWorkingOn.astro";
 ---
 
 <section
-  class="min-h-screen flex flex-col items-start md:items-center justify-center gap-8 p-6 relative"
+  class="h-[940px] flex flex-col items-start md:items-center justify-center gap-8 p-6 relative"
 >
   <div
     class="flex flex-col items-start md:items-center justify-center gap-4 md:gap-2"
@@ -41,16 +41,26 @@ import CurrentlyWorkingOn from "./CurrentlyWorkingOn.astro";
 
 <style>
   section {
-    @apply border-b-[1px] border-b-border;
+    @apply relative dark:border-none border-b-[1px] border-b-border;
     background: url(/bg.svg),
       radial-gradient(
-        50% 50% at 50% 100%,
-        rgba(255, 255, 255, 0.04) 0%,
+        680px 480px at 50% 100%,
+        rgba(255, 255, 255, 0.03) 0%,
         rgba(0, 0, 0, 0) 100%
       );
 
     background-position: bottom;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
+  }
+
+  section::after {
+    @apply absolute bottom-0 left-0 right-0 h-[1px];
+    content: "";
+    background: radial-gradient(
+      680px 480px at 50% 100%,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
   }
 </style>
