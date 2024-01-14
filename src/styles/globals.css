@@ -53,10 +53,15 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     background-image: url(/noise.png);
     background-repeat: repeat;
     background-size: 250px 250px;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
   }
 }

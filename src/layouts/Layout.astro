@@ -3,6 +3,8 @@ import "@fontsource-variable/inter";
 import "@fontsource-variable/jetbrains-mono";
 import "@fontsource-variable/space-grotesk";
 
+import { ViewTransitions } from "astro:transitions";
+
 import "@/styles/globals.css";
 
 interface Props {
@@ -13,7 +15,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -21,32 +23,36 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <ViewTransitions />
   </head>
   <body>
     <slot />
+    <script>
+      const getThemePreference = () => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      };
+      const isDark = getThemePreference() === "dark";
+      document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+      if (typeof localStorage !== "undefined") {
+        const observer = new MutationObserver(() => {
+          const isDark = document.documentElement.classList.contains("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }
+    </script>
   </body>
 </html>
-
-<script>
-  const getThemePreference = () => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  };
-  const isDark = getThemePreference() === "dark";
-  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
-
-  if (typeof localStorage !== "undefined") {
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-  }
-</script>
