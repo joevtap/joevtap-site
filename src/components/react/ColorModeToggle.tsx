@@ -12,7 +12,7 @@ import {
 export function ColorModeToggle() {
   const [theme, setThemeState] = React.useState<
     "theme-light" | "dark" | "system"
-  >("theme-light");
+  >("dark");
 
   React.useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains("dark");
@@ -20,10 +20,7 @@ export function ColorModeToggle() {
   }, []);
 
   React.useEffect(() => {
-    const isDark =
-      theme === "dark" ||
-      (theme === "system" &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const isDark = theme === "dark";
     document.documentElement.classList[isDark ? "add" : "remove"]("dark");
   }, [theme]);
 
@@ -38,13 +35,16 @@ export function ColorModeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setThemeState("theme-light")}>
-          Dia
+          <span className="flex items-center justify-start gap-2">
+            <SunIcon />
+            Dia
+          </span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setThemeState("dark")}>
-          Noite
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setThemeState("system")}>
-          Sistema
+          <span className="flex items-center justify-start gap-2">
+            <MoonIcon />
+            Noite
+          </span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
