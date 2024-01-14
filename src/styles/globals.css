@@ -53,10 +53,29 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     background-image: url(/noise.png);
     background-repeat: repeat;
     background-size: 250px 250px;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .anim {
+    transition: all 300ms ease-in-out;
+  }
+
+  .anim-hide {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .anim-show {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -22,3 +22,22 @@ import ScrollHome from "@/components/astro/ScrollHome.astro";
     <ColorModeToggle client:load />
   </Controls>
 </Layout>
+
+<script>
+  const anim = document.querySelectorAll(".anim");
+  const hero = document.getElementById("hero");
+
+  window.addEventListener("load", () => {
+    anim.forEach((item) => {
+      setTimeout(
+        () => {
+          item.classList.add("anim-show");
+          item.classList.remove("anim-hide");
+        },
+        +item.getAttribute("data-delay")! * 300
+      );
+    });
+
+    hero!.classList.add("expand");
+  });
+</script>
