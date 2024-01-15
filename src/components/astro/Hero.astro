@@ -6,22 +6,18 @@ import CurrentlyWorkingOn from "./CurrentlyWorkingOn.astro";
 
 <section
   id="hero"
-  class="min-h-screen flex flex-col items-start md:items-center justify-center gap-8 p-6 relative"
+  class="h-screen max-h-[1080px] flex flex-col items-start md:items-center justify-center gap-8 p-6 relative anim-fade-in"
 >
   <div
     class="flex flex-col items-start md:items-center justify-center gap-4 md:gap-2"
   >
     <CurrentlyWorkingOn />
     <h1
-      class="font-display text-[48px] md:text-[56px] leading-tight md:leading-relaxed text-left md:text-center font-semibold text-foreground anim anim-hide"
-      data-delay="0"
+      class="font-display text-[48px] md:text-[56px] lg:text-[64px] leading-tight md:leading-relaxed text-left md:text-center font-semibold text-foreground"
     >
       Desenvolvedor & Designer de UX
     </h1>
-    <p
-      class="text-left md:text-center max-w-[840px] leading-relaxed anim anim-hide"
-      data-delay="0.3"
-    >
+    <p class="text-left md:text-center max-w-[840px] leading-relaxed">
       Me chamo Joel Vítor <a href="https://github.com/joevtap" target="_blank"
         ><span
           class="bg-secondary px-1 py-[2px] rounded-md text-secondary-foreground font-mono text-xs font-medium"
@@ -32,18 +28,13 @@ import CurrentlyWorkingOn from "./CurrentlyWorkingOn.astro";
     </p>
   </div>
   <div class="flex gap-4 justify-center">
-    <a
-      href="https://github.com/joevtap"
-      target="_blank"
-      class="anim anim-hide"
-      data-delay="0.6"
-    >
+    <a href="https://github.com/joevtap" target="_blank">
       <Button>
         <GitHubLogoIcon className="mr-2 h-4 w-4" />
         GitHub
       </Button>
     </a>
-    <a href="/#about" class="anim anim-hide" data-delay="0.9">
+    <a href="/#about">
       <Button variant="secondary">Sobre mim</Button>
     </a>
   </div>
@@ -59,20 +50,9 @@ import CurrentlyWorkingOn from "./CurrentlyWorkingOn.astro";
         rgba(0, 0, 0, 0) 100%
       );
 
-    background-position: bottom;
+    background-position: center bottom;
     background-repeat: no-repeat;
     background-size: auto;
-
-    /* Anim expand */
-    transform: scale(0.9);
-    opacity: 0;
-    transition: 300ms;
-  }
-
-  /* Anim expand */
-  .expand {
-    transform: scale(1);
-    opacity: 1;
   }
 
   section::after {
@@ -85,23 +65,3 @@ import CurrentlyWorkingOn from "./CurrentlyWorkingOn.astro";
     );
   }
 </style>
-
-<script>
-  // Animations
-  const anim = document.querySelectorAll(".anim");
-  const hero = document.getElementById("hero");
-
-  window.addEventListener("load", () => {
-    anim.forEach((item) => {
-      setTimeout(
-        () => {
-          item.classList.add("anim-show");
-          item.classList.remove("anim-hide");
-        },
-        +item.getAttribute("data-delay")! * 300
-      );
-    });
-
-    hero!.classList.add("expand");
-  });
-</script>
