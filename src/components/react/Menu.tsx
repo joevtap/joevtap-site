@@ -26,7 +26,7 @@ export function Menu({ links }: Props) {
       <DrawerContent>
         <div className="flex flex-col w-full gap-4 items-center justify-center p-4 py-8">
           {links.map(({ href, label }) => (
-            <a href={href} className="w-full">
+            <a href={href} className="w-full" key={label}>
               <DrawerClose className="w-full">
                 <Button variant="ghost" className="w-full">
                   {label}

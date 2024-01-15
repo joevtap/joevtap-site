@@ -55,6 +55,21 @@ import CurrentlyWorkingOn from "./CurrentlyWorkingOn.astro";
     background-size: auto;
   }
 
+  .anim-fade-in {
+    animation: fade-in 300ms forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
   section::after {
     @apply absolute bottom-0 left-0 right-0 h-[1px];
     content: "";
