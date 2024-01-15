@@ -1,10 +1,6 @@
 ---
 import Hero from "@/components/astro/Hero.astro";
 import Layout from "../layouts/Layout.astro";
-import { ColorModeToggle } from "@/components/react/ColorModeToggle";
-import Controls from "@/components/astro/Controls.astro";
-import Scroll from "@/components/astro/Scroll.astro";
-import ScrollHome from "@/components/astro/ScrollHome.astro";
 ---
 
 <Layout title="@joevtap | dev & ux">
@@ -15,10 +11,4 @@ import ScrollHome from "@/components/astro/ScrollHome.astro";
   <!-- Habilidades -->
   <!-- Entre em contato -->
   <!-- Footer -->
-  <Controls>
-    <ScrollHome />
-    <Scroll direction="up" />
-    <Scroll direction="down" />
-    <ColorModeToggle client:load />
-  </Controls>
 </Layout>

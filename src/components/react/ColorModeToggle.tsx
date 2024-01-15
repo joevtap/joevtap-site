@@ -22,6 +22,10 @@ export function ColorModeToggle() {
   React.useEffect(() => {
     const isDark = theme === "dark";
     document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+    document.documentElement.style.setProperty(
+      "color-scheme",
+      isDark ? "dark" : "light"
+    );
   }, [theme]);
 
   return (
