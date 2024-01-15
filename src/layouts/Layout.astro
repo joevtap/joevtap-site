@@ -32,7 +32,7 @@ const { title } = Astro.props;
     <Controls>
       <ScrollHome />
       <Menu
-        client:load
+        client:only
         links={[
           { href: "/", label: "Home" },
           { href: "/#about", label: "Sobre mim" },
