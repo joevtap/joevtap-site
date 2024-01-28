@@ -3,12 +3,9 @@ import "@fontsource-variable/inter";
 import "@fontsource-variable/jetbrains-mono";
 import "@fontsource-variable/space-grotesk";
 
-import { ColorModeToggle } from "@/components/react/color-mode-toggle";
-import Controls from "@/components/astro/controls.astro";
-import ScrollHome from "@/components/astro/scroll-home.astro";
-
 import "@/styles/globals.css";
-import { Menu } from "@/components/react/menu";
+
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -18,7 +15,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -26,47 +23,16 @@ const { title } = Astro.props;
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
-  <body class="my-0 mx-auto max-w-[1920px] scroll-smooth">
-    <slot />
-    <Controls>
-      <ScrollHome />
-      <!-- <Menu
-        client:only
-        links={[
-          { href: "/", label: "Home" },
-          { href: "/#about", label: "Sobre mim" },
-          { href: "/#services", label: "Serviços" },
-          { href: "/#skills", label: "Habilidades" },
-          { href: "/#projects", label: "Projetos" },
-          { href: "/#contact", label: "Contato" },
-        ]}
-      /> -->
-      <ColorModeToggle client:load />
-    </Controls>
-    <script>
-      const getThemePreference = () => {
-        if (
-          typeof localStorage !== "undefined" &&
-          localStorage.getItem("theme")
-        )
-          return localStorage.getItem("theme");
-
-        return "dark";
-      };
-      const isDark = getThemePreference() === "dark";
-      document.documentElement.classList[isDark ? "add" : "remove"]("dark");
-
-      if (typeof localStorage !== "undefined") {
-        const observer = new MutationObserver(() => {
-          const isDark = document.documentElement.classList.contains("dark");
-          localStorage.setItem("theme", isDark ? "dark" : "light");
-        });
-        observer.observe(document.documentElement, {
-          attributes: true,
-          attributeFilter: ["class"],
-        });
+  <body>
+    <div class="site-wrapper">
+      <slot />
+    </div>
+    <style>
+      .site-wrapper {
+        @apply my-0 mx-auto max-w-4xl min-h-screen p-4 border-2 border-neutral-950 dark:border-neutral-50;
       }
-    </script>
+    </style>
   </body>
 </html>
