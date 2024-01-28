@@ -1,8 +1,43 @@
 ---
+import ExternalLink from "@/components/external-link.astro";
 import Layout from "../layouts/layout.astro";
 ---
 
 <Layout title="@joevtap | about">
-  <h1 class="text-4xl tracking-tight font-black font-display">About</h1>
-  <a href="/">Home</a>
+  <h1 class="scroll-m-20 text-2xl font-semibold tracking-tight font-display">
+    Sobre
+  </h1>
+  <blockquote class="mt-6 border-l-2 pl-6 italic">
+    "If you feel frustrated, it means you can still grow."
+
+    <cite class="block mt-2 text-sm font-medium"
+      >- Ryuji Ayukawa em Blue Period, por Tsubasa Yamaguchi</cite
+    >
+  </blockquote>
+  <p class="font-sans leading-7 [&:not(:first-child)]:mt-6">
+    Tenho 21 anos e atualmente curso Sistemas de Informação na Universidade
+    Federal de Itajubá (UNIFEI).
+  </p>
+  <p class="font-sans leading-7 [&:not(:first-child)]:mt-6">
+    Sou um jovem sonhador, apreciador das coisas pequenas da vida e de um bom
+    cochilo. Tenho o conhecimento como um objetivo permanente na minha vida, por
+    isso sempre estou aprendendo algo novo.
+  </p>
+  <p class="font-sans leading-7 [&:not(:first-child)]:mt-6">
+    No meu tempo livre você pode me encontrar ouvindo música, assistindo anime,
+    ou aprendendo algum idioma (atualmente me dedico diariamante ao Japonês).
+    Quero aprender a tocar um instrumento, penso em violão ou baixo.
+  </p>
+  <ul class="mt-12 flex flex-col gap-4">
+    <li>
+      <ExternalLink href="https://github.com/joevtap" label="Github" />
+    </li>
+    <li>
+      <ExternalLink href="https://linkedin.com/in/joevtap" label="LinkedIn" />
+    </li>
+    <li><ExternalLink href="https://x.com/joevtap" label="X/twitter" /></li>
+    <li>
+      <a href="/" class="text-sm font-semibold hover:underline">Voltar</a>
+    </li>
+  </ul>
 </Layout>
