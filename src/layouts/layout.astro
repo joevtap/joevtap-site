@@ -3,12 +3,12 @@ import "@fontsource-variable/inter";
 import "@fontsource-variable/jetbrains-mono";
 import "@fontsource-variable/space-grotesk";
 
-import { ColorModeToggle } from "@/components/react/ColorModeToggle";
-import Controls from "@/components/astro/Controls.astro";
-import ScrollHome from "@/components/astro/ScrollHome.astro";
+import { ColorModeToggle } from "@/components/react/color-mode-toggle";
+import Controls from "@/components/astro/controls.astro";
+import ScrollHome from "@/components/astro/scroll-home.astro";
 
 import "@/styles/globals.css";
-import { Menu } from "@/components/react/Menu";
+import { Menu } from "@/components/react/menu";
 
 interface Props {
   title: string;
@@ -27,11 +27,11 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="my-0 mx-auto max-w-[1920px] scroll-smooth">
     <slot />
     <Controls>
       <ScrollHome />
-      <Menu
+      <!-- <Menu
         client:only
         links={[
           { href: "/", label: "Home" },
@@ -41,7 +41,7 @@ const { title } = Astro.props;
           { href: "/#projects", label: "Projetos" },
           { href: "/#contact", label: "Contato" },
         ]}
-      />
+      /> -->
       <ColorModeToggle client:load />
     </Controls>
     <script>
