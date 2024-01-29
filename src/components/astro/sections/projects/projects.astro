@@ -1,0 +1,44 @@
+---
+import Card from "./card.astro";
+import waterfall from "@/assets/waterfall.jpg";
+import forest from "@/assets/forest.jpg";
+import camping from "@/assets/camping.jpg";
+import { Button } from "@/components/ui/button";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
+---
+
+<section
+  id="projects"
+  class="flex flex-col items-center justify-center gap-6 py-12 px-4 md:px-16"
+>
+  <h1 class="scroll-m-20 text-3xl font-semibold tracking-tight font-display">
+    Projetos (WIP)
+  </h1>
+  <div class="flex flex-wrap gap-4 w-full lg:max-w-[80%]">
+    <Card
+      title="Cachoeira"
+      description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
+      image={waterfall.src}
+      alt="Cachoeira"
+    />
+    <Card
+      title="Floresta"
+      description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
+      image={forest.src}
+      alt="Floresta"
+    />
+    <Card
+      title="Barraca"
+      description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
+      image={camping.src}
+      alt="Barraca"
+    />
+  </div>
+
+  <a href="https://github.com/joevtap" target="_blank">
+    <Button>
+      <GitHubLogoIcon className="mr-2 h-4 w-4" />
+      Repositórios no Github
+    </Button>
+  </a>
+</section>
