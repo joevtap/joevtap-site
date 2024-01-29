@@ -12,7 +12,7 @@
     @apply bg-neutral-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50;
     background-image: url(/noise.png);
     background-repeat: repeat;
-    background-size: 250px 250px;
+    background-size: 400px 400px;
   }
 
   ::selection {
